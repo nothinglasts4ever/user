@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user-app
+    username: us3r
+    password: p455w0rd
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+
+logging:
+  level:
+    com.company.user.client.AgifyClient: DEBUG
+#    feign: DEBUG
+

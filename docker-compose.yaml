@@ -1,0 +1,14 @@
+version: '3'
+services:
+  user-app-db:
+    image: "postgres:12"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=us3r
+      - POSTGRES_PASSWORD=p455w0rd
+      - POSTGRES_DB=user-app
+    volumes:
+      - user-app-data:/var/lib/postgresql/data/
+volumes:
+  user-app-data:
