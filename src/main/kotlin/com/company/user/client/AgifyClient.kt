@@ -13,4 +13,5 @@ interface AgifyClient {
 
     @GetMapping
     fun getBatchAgifyInfo(@RequestParam(name = "name[]") names: Set<String>): List<AgifyInfo>
+
 }

@@ -4,6 +4,7 @@ import com.company.user.service.UserService
 import com.company.user.web.api.UserRequest
 import com.company.user.web.api.UserResponse
 import org.springframework.http.HttpStatus
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -22,7 +23,7 @@ class UserController(private val service: UserService) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createUser(
-        @RequestBody request: UserRequest,
+        @RequestBody @Validated request: UserRequest,
     ): UserResponse {
         return service.createUser(request)
     }
@@ -42,7 +43,7 @@ class UserController(private val service: UserService) {
     @PutMapping("/{id}")
     fun updateUser(
         @PathVariable id: UUID,
-        @RequestBody request: UserRequest,
+        @RequestBody @Validated request: UserRequest,
     ): UserResponse {
         return service.updateUser(id, request)
     }

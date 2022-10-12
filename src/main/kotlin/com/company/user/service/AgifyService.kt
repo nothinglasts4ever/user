@@ -18,13 +18,13 @@ class AgifyService(private val client: AgifyClient) {
         return agifyInfo.age
     }
 
-    fun getUserAges(names: List<String>): Map<String, Int?> {
+    fun getUserAges(names: Set<String>): Map<String, Int?> {
         val agifyInfoList = try {
-            client.getBatchAgifyInfo(names.toSet())
+            client.getBatchAgifyInfo(names)
         } catch (e: FeignException) {
             return emptyMap()
         }
-        logger.info(agifyInfoList.toString())
+        logger.debug("Received $agifyInfoList")
         return agifyInfoList.associateBy(AgifyInfo::name, AgifyInfo::age)
     }
 

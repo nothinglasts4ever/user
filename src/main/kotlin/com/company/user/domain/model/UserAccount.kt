@@ -22,5 +22,5 @@ data class UserAccount(
 
     override fun hashCode(): Int = javaClass.hashCode()
 
-    override fun toString(): String = this::class.simpleName + "(id = $id , name = $name , email = $email , phoneNumber = $phoneNumber )"
+    override fun toString(): String = this::class.simpleName + "(id = $id , name = $name , email = $email , phoneNumber = $phoneNumber)"
 }

@@ -22,31 +22,37 @@ class UserService(
             phoneNumber = request.phoneNumber,
         )
         val age = agifyService.getUserAgeOrNull(request.name)
+
         return repo.save(user).toResponse(age)
     }
 
     fun getUser(id: UUID): UserResponse {
         val user = getUserOrElseThrow(id)
         val age = agifyService.getUserAgeOrNull(user.name)
+
         return user.toResponse(age)
     }
 
     fun getAllUsers(): List<UserResponse> {
         val users = repo.findAll()
-        val age = agifyService.getUserAges(users.map { it.name })
+        val userNames = users.map { it.name }.toSet()
+        val ages = agifyService.getUserAges(userNames)
+
         return users.map {
-            it.toResponse(age[it.name])
+            it.toResponse(ages[it.name])
         }
     }
 
     fun updateUser(id: UUID, request: UserRequest): UserResponse {
         val user = getUserOrElseThrow(id)
+            .copy(
+                name = request.name,
+                email = request.email,
+                phoneNumber = request.phoneNumber,
+            )
         val age = agifyService.getUserAgeOrNull(request.name)
-        return repo.save(user.copy(
-            name = request.name,
-            email = request.email,
-            phoneNumber = request.phoneNumber,
-        )).toResponse(age)
+
+        return repo.save(user).toResponse(age)
     }
 
     fun deleteUser(id: UUID) {

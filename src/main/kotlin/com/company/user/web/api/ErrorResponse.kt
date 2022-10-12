@@ -1,8 +1,11 @@
 package com.company.user.web.api
 
-import java.time.OffsetDateTime
-
 data class ErrorResponse(
     val message: String,
-    val timestamp: OffsetDateTime = OffsetDateTime.now(),
+    val validationErrors: List<ValidationError> = emptyList(),
+)
+
+data class ValidationError(
+    val field: String,
+    val error: String?,
 )
