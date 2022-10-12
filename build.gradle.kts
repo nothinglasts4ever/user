@@ -14,6 +14,7 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 val springCloudVersion = "2021.0.4"
 val openApiVersion = "1.6.11"
+val mockkVersion = "1.13.2"
 
 repositories {
     mavenCentral()
@@ -34,6 +35,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }
 
 dependencyManagement {

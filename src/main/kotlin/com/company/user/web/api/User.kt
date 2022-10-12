@@ -6,10 +6,10 @@ import javax.validation.constraints.Pattern
 import javax.validation.constraints.Size
 
 data class UserRequest(
-    @field:Size(max = 747)
+    @field:Size(min = 1, max = 747)
     val name: String,
 
-    @field:Email
+    @field:Email @field:Size(max = 255)
     val email: String,
 
     @field:Pattern(regexp = "^[+]?[0-9]{2,15}\$")

@@ -19,4 +19,5 @@ Implement a simple user management CRUD application based on Java/Kotlin
   * Put regex for **phone number** that accepts optional plus sign in the beginning and up to 15 digits (according to E.164), 
     * UX improvements is expected to be performed on frontend side (removing parentheses/dashes/spaces and/or providing country code separation for visual purposes)
 * For `GET /users` endpoint batch request (with set of names) to Agify is used
-* Custom error response (raised by error handler) provided in order to send consistent messages for REST calls 
+* Custom error response (raised by error handler) provided in order to send consistent messages for REST calls
+* The application is quite small and has straight forward logic, the only part to cover with unit tests is to make sure age correctly mapped to users, also integration tests can be added
